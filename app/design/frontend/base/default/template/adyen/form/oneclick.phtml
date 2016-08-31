@@ -125,7 +125,7 @@ $_recurringDetails = $this->getRecurringDetails();
                             name:  'payment_encrypted_data_<?php echo $_code;?>'
                         };
 
-                        var cseUpdateOneClick = function() {
+                        var cseUpdateOneClick_<?php echo $_code ?> = function() {
 
                             try {
                                 if (payment.currentMethod && payment.currentMethod == '<?php echo $_code ?>') {
@@ -152,7 +152,7 @@ $_recurringDetails = $this->getRecurringDetails();
 
                         };
 
-                        var cseInitOneClick = function() {
+                        var cseInitOneClick_<?php echo $_code ?> = function() {
                             if (typeof adyen === 'undefined') {
                                 var script = document.createElement("script");
                                 script.type = "text/javascript";
@@ -171,11 +171,11 @@ $_recurringDetails = $this->getRecurringDetails();
 
                             var fields = $$('#payment_form_<?php echo $_code ?> input, #payment_form_<?php echo $_code ?> textarea, #payment_form_<?php echo $_code ?> select');
                             fields.forEach(function(field) {
-                                field.observe('change', cseUpdateOneClick);
+                                field.observe('change', cseUpdateOneClick_<?php echo $_code ?>);
                             });
                         };
 
-                        cseInitOneClick();
+                        cseInitOneClick_<?php echo $_code ?>();
                     </script>
                 <?php endif;?>
 
